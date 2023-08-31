@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace HealthBar
@@ -6,6 +5,11 @@ namespace HealthBar
     public class BillboardBar : MonoBehaviour
     {
         [SerializeField] private Transform _camera;
+
+        private void Awake()
+        {
+            _camera = FindObjectOfType<UnityEngine.Camera>().transform;
+        }
 
         private void LateUpdate()
         {
