@@ -14,6 +14,7 @@ namespace Player
 
         private Vector3 _velocity;
         private bool _isGrounded;
+        private bool _isControlled;
 
         private void Update()
         {
@@ -41,6 +42,7 @@ namespace Player
         {
             if (Input.GetButtonDown("Jump") && _isGrounded)
             {
+                _isControlled = false;
                 _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
             }
         }
@@ -50,6 +52,7 @@ namespace Player
             _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
             if (_isGrounded && _velocity.y < 0)
             {
+                _isControlled = true;
                 _velocity.y = -2f;
             }
         }
@@ -62,6 +65,8 @@ namespace Player
 
         private void Moved()
         {
+            if (_isControlled == false)
+                return;
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
