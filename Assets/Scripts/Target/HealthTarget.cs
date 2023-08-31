@@ -16,13 +16,13 @@ namespace Target
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (_currentHealth <= 0)
             {
-                TakeDamage(10);
+                Destroy(gameObject);
             }
         }
 
-        private void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             _currentHealth -= damage;
             _healthBar.SetHealthBar(_currentHealth);

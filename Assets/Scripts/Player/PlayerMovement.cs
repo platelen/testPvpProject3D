@@ -65,8 +65,8 @@ namespace Player
 
         private void Moved()
         {
-            if (_isControlled == false)
-                return;
+            // if (_isControlled == false)
+            //     return;
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
